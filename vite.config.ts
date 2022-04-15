@@ -2,7 +2,7 @@
 import { loadEnv, defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 // import legacy from '@vitejs/plugin-legacy';
-// import eslintPlugin from 'vite-plugin-eslint';
+import eslintPlugin from 'vite-plugin-eslint';
 // import { createHtmlPlugin } from 'vite-plugin-html';
 import { join } from 'path';
 
@@ -42,9 +42,9 @@ export default defineConfig(({ command, mode }) => {
       // }
     // },
     plugins: [
-      // eslintPlugin({
-      //   include: 'src/**/*.+(js|jsx|ts|tsx)'
-      // }),
+      eslintPlugin({
+        include: 'src/**/*.+(js|jsx|ts|tsx)'
+      }),
       react(),
       // createHtmlPlugin({
       //   inject: {
@@ -60,6 +60,13 @@ export default defineConfig(({ command, mode }) => {
       //   targets: ['ie >= 11'],
       //   additionalLegacyPolyfills: ['regenerator-runtime/runtime']
       // })
-    ]
+    ],
+    optimizeDeps: {
+      // Bug: When using vite with options --mode, error in console "module is not defined at jsx-runtime.js"
+      // Ref:
+      //   - https://githubhot.com/repo/vitejs/vite/issues/7539
+      //   - https://github.com/mdx-js/mdx/issues/1994
+      include: ['react/jsx-runtime']
+    }
   };
 });

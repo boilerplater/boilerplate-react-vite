@@ -51,6 +51,7 @@ const IndexPage: React.FC<Props> = () => {
           <div className="flex flex-wrap -mx-6">
             <div className="w-full md:w-4/12 px-6">
               <h2 className="text-xl font-medium mb-4">Environment Variables</h2>
+              <div>NODE_ENV: {process.env.NODE_ENV}</div>
               <div>APP_ENV: {import.meta.env.VITE_APP_ENV}</div>
               <div>CDN_URL: {import.meta.env.VITE_APP_CDN_URL}</div>
               <div>Package Name: {import.meta.env.VITE_APP_PKG_NAME}</div>

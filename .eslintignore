@@ -1,0 +1,12 @@
+/node_modules
+/.env
+/public
+/static
+/build
+/src/reportWebVitals.ts
+/src/serviceWorker.ts
+/src/setupTests.ts
+
+.swp
+.DS_Store
+yarn-error.log
