@@ -9,7 +9,7 @@ const IndexPage: React.FC<Props> = () => {
   const [count, setCount] = useState(0)
 
   return (
-    <div className="text-center">
+    <main>
       <header className="min-h-screen flex flex-col items-center justify-center text-base text-white bg-[#282c34]">
         <img src={logo} className="App-logo h-72" alt="logo" />
         <p>Hello Vite + React!</p>
@@ -45,7 +45,30 @@ const IndexPage: React.FC<Props> = () => {
           </a>
         </p>
       </header>
-    </div>
+
+      <section className="py-6">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-wrap -mx-6">
+            <div className="w-full md:w-4/12 px-6">
+              <h2 className="text-xl font-medium mb-4">Environment Variables</h2>
+              <div>APP_ENV: {import.meta.env.VITE_APP_ENV}</div>
+              <div>CDN_URL: {import.meta.env.VITE_APP_CDN_URL}</div>
+              <div>Package Name: {import.meta.env.VITE_APP_PKG_NAME}</div>
+              <div>Package Version: {import.meta.env.VITE_APP_PKG_VERSION}</div>
+            </div>
+
+            <div className="w-full md:w-4/12 px-6">
+              Test
+            </div>
+
+            <div className="w-full md:w-4/12 px-6">
+              Test
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
   )
 };
 

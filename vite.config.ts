@@ -31,7 +31,7 @@ export default defineConfig(({ command, mode }) => {
       },
     },
     // build: {
-      // outDir: './build',
+      // outDir: './dist',
       // chunkSizeWarningLimit: 3000,
       // rollupOptions: {
       //   output: {
