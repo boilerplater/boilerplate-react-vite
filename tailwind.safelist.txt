@@ -1,0 +1,14 @@
+bs-popover-top
+bs-popover-end
+bs-popover-bottom
+bs-popover-start
+bs-popover-auto
+
+bs-tooltip-top
+bs-tooltip-end
+bs-tooltip-bottom
+bs-tooltip-start
+bs-tooltip-auto
+
+modal-open
+modal-scrollbar-measure
