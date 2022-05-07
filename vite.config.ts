@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react';
 // import legacy from '@vitejs/plugin-legacy';
 import eslintPlugin from 'vite-plugin-eslint';
 // import { createHtmlPlugin } from 'vite-plugin-html';
+// import { minifyHtml, injectHtml } from 'vite-plugin-html';
 import { join } from 'path';
 
 // https://vitejs.dev/config/
@@ -18,7 +19,14 @@ export default defineConfig(({ command, mode }) => {
     // publicDir: 'public',
     server: {
       open: true,
-      https: isHTTPS
+      https: isHTTPS,
+      // https: {
+      //   key: fs.readFileSync('localhost-key.pem'),
+      //   cert: fs.readFileSync('localhost.pem'),
+      // },
+      // proxy: {
+      //   '/v1': 'http://api-local.adtaco.com/v1',
+      // },
     },
     define: {
       'import.meta.env.VITE_APP_PKG_VERSION': JSON.stringify(process.env.npm_package_version),
@@ -27,7 +35,7 @@ export default defineConfig(({ command, mode }) => {
     resolve: {
       alias: {
         '@': join(__dirname, 'src'),  // map '~' to './src'
-        // '~/public': join(__dirname, 'public'),
+        // '@/public': join(__dirname, 'public'),
       },
     },
     // build: {
@@ -46,6 +54,14 @@ export default defineConfig(({ command, mode }) => {
         include: 'src/**/*.+(js|jsx|ts|tsx)'
       }),
       react(),
+      // injectHtml({
+      //   injectData: {
+      //     ...env,
+      //     NODE_ENV: process.env.NODE_ENV,
+      //     title: 'vite-plugin-html-example',
+      //     // injectScript: '<script src="./inject.js"></script>',
+      //   },
+      // }),
       // createHtmlPlugin({
       //   inject: {
       //     data: {

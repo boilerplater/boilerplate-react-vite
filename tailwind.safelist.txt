@@ -10,5 +10,6 @@ bs-tooltip-bottom
 bs-tooltip-start
 bs-tooltip-auto
 
+modal-backdrop
 modal-open
 modal-scrollbar-measure

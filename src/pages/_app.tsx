@@ -1,15 +1,14 @@
 import React from 'react';
 import { HelmetProvider } from 'react-helmet-async';
-import Document from './_document';
 
 interface Props {
   children?: React.ReactNode;
 }
 
-const App: React.FC<Props> = () => {
+const App: React.FC<Props> = ({children}) => {
   return (
     <HelmetProvider>
-      <Document />
+      {children}
     </HelmetProvider>
   )
 }

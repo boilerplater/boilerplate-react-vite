@@ -1,6 +1,6 @@
 {
   "name": "boilerplate-react-vite",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Boilerplate for React + Vite",
   "private": true,
   "scripts": {
@@ -21,9 +21,13 @@
     "eslint": "~8.13.0"
   },
   "dependencies": {
+    "antd": "~4.20.0",
     "react": "~18.0.0",
     "react-dom": "~18.0.0",
     "react-helmet-async": "~1.3.0",
+    "react-router": "~6.3.0",
+    "react-router-dom": "~6.3.0",
+    "tailwindcss-bootstrap": "~0.1.2",
     "web-vitals": "~2.1.4"
   },
   "devDependencies": {

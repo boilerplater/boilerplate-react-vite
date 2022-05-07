@@ -1,6 +1,7 @@
 @import "tailwindcss/base";       /* @tailwind base; */
 @import "tailwindcss/components"; /* @tailwind components; */
 @import "tailwindcss/utilities";  /* @tailwind utilities; */
+@import 'tailwindcss-bootstrap/src/styles/index.css';
 
 html,
 body {

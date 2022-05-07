@@ -6,15 +6,15 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const IndexPage: React.FC<Props> = () => {
+const AboutPage: React.FC<Props> = () => {
   const [count, setCount] = useState(0);
 
   return (
     <main>
-      <div>INDEX</div>
+      <div>ABOUT</div>
       <header className="min-h-screen flex flex-col items-center justify-center text-base text-white bg-[#282c34]">
         <img src={logo} className="App-logo h-72" alt="logo" />
-        <p>Hello Vite + React!</p>
+        <p>ABOUT Vite + React!</p>
         <div>
           <button
             type="button"
@@ -75,4 +75,4 @@ const IndexPage: React.FC<Props> = () => {
   )
 };
 
-export default IndexPage;
+export default AboutPage;

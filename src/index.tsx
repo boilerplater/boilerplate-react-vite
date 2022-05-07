@@ -1,14 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './pages/_app';
+import { BrowserRouter } from 'react-router-dom';
+import AppRoutes from './pages/_routes';
 import reportWebVitals from './reportWebVitals';
+import 'antd/dist/antd.css';
 import './index.css';
 
 const container = document.getElementById('root')! as HTMLElement;
 
 ReactDOM.createRoot(container).render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
   </React.StrictMode>
 );
 
