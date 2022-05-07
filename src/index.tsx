@@ -5,6 +5,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from '@/lib/redux/store';
 import { BrowserRouter } from 'react-router-dom';
 import AppRoutes from './pages/_routes';
+import PreloaderStatic from '@/components/PreloaderStatic';
 import reportWebVitals from './reportWebVitals';
 import 'antd/dist/antd.css';
 import './index.css';
@@ -16,9 +17,12 @@ ReactDOM.createRoot(container).render(
     <Provider store={store} context={ReactReduxContext}>
       <PersistGate persistor={persistor} onBeforeLift={() => new Promise(resolve => setTimeout(resolve, 500))}>
         {(bootstrapped) => (
-          <BrowserRouter>
-            <AppRoutes />
-          </BrowserRouter>
+          <>
+            <PreloaderStatic bootstrapped={bootstrapped} />
+            <BrowserRouter>
+              <AppRoutes />
+            </BrowserRouter>
+          </>
         )}
       </PersistGate>
     </Provider>

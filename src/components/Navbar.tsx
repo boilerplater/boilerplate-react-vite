@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '@/lib/redux/hooks';
 import { updateDarkMode } from '@/lib/redux/app/appSlice';
+import { FlagIconUS, FlagIconGB, FlagIconPH } from '@flagkit/react';
 
 interface Props {
   children?: React.ReactNode;
@@ -13,7 +14,10 @@ const Navbar: React.FC<Props> = ({ className }) => {
   const dispatch = useAppDispatch();
   const classNames = className ? ' ' + className : '';
   const appState = useAppSelector((state) => { return state.app });
+  const { siteLocation } = useAppSelector((state) => { return state.app });
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+  const { locale: i18nLocale } = useAppSelector((state) => { return state.i18n });
+  const [currentLocale, setCurrentLocale] = useState<string>(i18nLocale);
 
   useEffect(() => {
     if (appState.darkMode === true || (!('darkMode' in appState) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -76,6 +80,42 @@ const Navbar: React.FC<Props> = ({ className }) => {
                     <ion-icon name="sunny-outline" aria-label="sunny outline" role="img" class="text-lg md hydrated"></ion-icon>
                   </>
                 )}
+              </button>
+            </li>
+            <li className="nav-item">
+              <button
+                type="button"
+                className="btn bg-transparent nav-link ml-1 hidden md:block"
+                data-bs-toggle="modal"
+                data-bs-target="#I18nModal"
+              >
+                {(() => {
+                  switch (siteLocation) {
+                    case 'US':
+                      return (
+                        <span className="inline-block relative">
+                          <FlagIconUS
+                            className="inline-block h-6 w-6 rounded-full align-middle"
+                            preserveAspectRatio="xMinYMax slice"
+                            style={{ marginRight: '-13px' }}
+                          />
+                          <FlagIconGB
+                            className="inline-block h-6 w-6 rounded-full align-middle"
+                            preserveAspectRatio="xMidYMax slice"
+                          />
+                        </span>
+                      );
+                    case 'PH':
+                    default:
+                      return (
+                        <FlagIconPH
+                          className="inline-block h-6 w-6 rounded-full align-middle"
+                          preserveAspectRatio="xMinYMax slice"
+                        />
+                      );
+                  }
+                })()}
+                <span className="text-xs ml-2">{currentLocale.toUpperCase()}</span>
               </button>
             </li>
             <li className="nav-item">

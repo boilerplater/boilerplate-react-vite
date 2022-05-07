@@ -16,6 +16,18 @@ code {
   @apply inline;
 }
 
+@layer components {
+  .page-static {
+    @apply static z-auto overflow-visible;
+    contain: none;
+  }
+
+  .page-overlay {
+    @apply absolute z-1040 overflow-visible;
+    contain: none;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -29,4 +41,14 @@ code {
   to {
     transform: rotate(360deg);
   }
+}
+
+.sidebar {
+  will-change: min-height;
+}
+
+.sidebar__inner {
+  transform: translate(0, 0); /* For browsers don't support translate3d. */
+  transform: translate3d(0, 0, 0);
+  will-change: position, transform;
 }
