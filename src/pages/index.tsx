@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import logo from '../assets/img/logo.svg';
+import { useListOfUsersGET } from '@/apis/UserApi';
 import configs from '../config/configuration';
 
 interface Props {
@@ -9,6 +10,13 @@ interface Props {
 
 const IndexPage: React.FC<Props> = () => {
   const [count, setCount] = useState(0);
+  // React Query usage
+  const {
+    isLoading: isUsersQueryLoading,
+    error: usersQueryError,
+    data: usersQueryData,
+    refetch: usersQueryRefetch
+  } = useListOfUsersGET({ limit: 10 });
 
   return (
     <>
@@ -18,6 +26,33 @@ const IndexPage: React.FC<Props> = () => {
 
       <main>
         <div>INDEX</div>
+
+        <section className="py-20 bg-gray-200 dark:bg-gray-800">
+          <div className="container px-6 mx-auto max-w-screen-xl">
+            <h2 className="font-medium text-3xl mb-8">React Query</h2>
+            {(isUsersQueryLoading && !usersQueryData) && (
+              <div>Loading...</div>
+            )}
+
+            {(usersQueryData && usersQueryData.length > 1) && (
+              <div>
+                <h3 className="text-xl font-medium mb-6">Users</h3>
+                <div className="flex flex-wrap -mx-6">
+                  {usersQueryData.map((user: any, i: number) => {
+                    return (
+                      <div key={i} className="w-full md:w-4/12 px-6 mb-6">
+                        <div className="border border-gray-500 rounded px-4">
+                          {user.firstName} {user.lastName}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+
         <header className="min-h-screen flex flex-col items-center justify-center text-base text-white bg-[#282c34]">
           <img src={logo} className="App-logo h-72" alt="logo" />
           <p>Hello Vite + React!</p>
