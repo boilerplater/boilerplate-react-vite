@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
+import { useAppSelector, useAppDispatch } from '@/lib/redux/hooks';
+import { updateDarkMode } from '@/lib/redux/app/appSlice';
 
 interface Props {
   children?: React.ReactNode;
@@ -8,7 +10,26 @@ interface Props {
 
 const Navbar: React.FC<Props> = ({ className }) => {
   let location = useLocation();
+  const dispatch = useAppDispatch();
   const classNames = className ? ' ' + className : '';
+  const appState = useAppSelector((state) => { return state.app });
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (appState.darkMode === true || (!('darkMode' in appState) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      setIsDarkMode(true)
+    } else {
+      setIsDarkMode(false)
+    }
+  }, [appState.darkMode]);
+
+  const handleToggleDarkMode = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (isDarkMode === true) {
+      dispatch(updateDarkMode(false));
+    } else {
+      dispatch(updateDarkMode(true));
+    }
+  };
 
   return (
     <div id="Navbar" className={'navbar bg-white navbar-light py-2.5 md:flex-nowrap md:flex-start' + classNames}>
@@ -40,6 +61,23 @@ const Navbar: React.FC<Props> = ({ className }) => {
           </ul>
 
           <ul className="navbar-nav hidden md:flex md:flex-row ml-auto">
+            <li className="nav-item">
+              <button
+                type="button"
+                className="btn bg-transparent nav-link text-gray-700 dark:text-gray-300"
+                onClick={handleToggleDarkMode}
+              >
+                {(isDarkMode === true) ? (
+                  <>
+                    <ion-icon name="moon-outline" aria-label="moon outline" role="img" class="text-lg md hydrated"></ion-icon>
+                  </>
+                ) : (
+                  <>
+                    <ion-icon name="sunny-outline" aria-label="sunny outline" role="img" class="text-lg md hydrated"></ion-icon>
+                  </>
+                )}
+              </button>
+            </li>
             <li className="nav-item">
               <NavLink
                 to={'/login'}

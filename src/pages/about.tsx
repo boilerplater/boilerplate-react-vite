@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { useLocation, useNavigationType } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import logo from '../assets/img/logo.svg';
 import configs from '../config/configuration';
 import Footer from '@/components/Footer';
+import ScrollToTop from '@/components/ScrollToTop';
 
 interface Props {
   children?: React.ReactNode;
@@ -10,12 +12,19 @@ interface Props {
 
 const AboutPage: React.FC<Props> = () => {
   const [count, setCount] = useState(0);
+  const location = useLocation();
+  const locState = location.state as { backgroundLocation?: Location };
+  const navigationType = useNavigationType();
 
   return (
     <>
       <Helmet>
         <title>About Us | Boilerplate</title>
       </Helmet>
+
+      {(!locState?.backgroundLocation && navigationType !== 'POP') && (
+        <ScrollToTop />
+      )}
 
       <main>
         <div>ABOUT</div>

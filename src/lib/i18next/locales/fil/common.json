@@ -1,0 +1,43 @@
+{
+  "h1": "Ein einfaches Beispiel",
+  "change-locale": "Magpalit ng Locale",
+  "to-second-page": "Zur zweiten Seite",
+  "error-with-status": "Auf dem Server ist ein Fehler ({{statusCode}}) aufgetreten",
+  "error-without-status": "Auf dem Server ist ein Fehler aufgetreten",
+  "title": "Hauptseite | next-i18next",
+  "welcome": "Uy, Maligayang Pagdating sa React Native Boilerplate galing kay @randelltuazon",
+  "actions": {
+    "continue": "Continue"
+  },
+  "example": {
+    "helloUser": "I am a fake user, my name is {{name}}",
+    "labels": {
+      "userId": "Enter a user id"
+    }
+  },
+  "common.brandName": "Mobaverse ph",
+  "common.brandName.tagline": "Ang sosyal na platform para sa pamilihan na base sa blockchain.",
+  "common.brandName.description": "Ito ay isang template para sa isang simpleng website sa marketing o impormasyon. May kasamang malaking callout na tinawag na jumbotron at tatlong sumusuporta sa mga piraso ng nilalaman. Gamitin ito bilang panimulang punto upang lumikha ng isang bagay na mas natatangi.",
+  "common.socialButtons.facebookLogin.label": "Mag-sign in gamit ang Facebook",
+  "common.socialButtons.googleSignIn.label": "Mag-sign in gamit ang Google",
+  "common.route.about.aboutUs": "Tungkol sa Amin",
+  "common.route.about.howItWorks": "Paano Ito Gumagana",
+  "common.route.about.terms": "Mga Tuntunin",
+  "common.route.about.team": "Koponan",
+  "common.route.auth.register.index": "Mag-rehistro",
+  "common.route.auth.register.joinUsForFree": "Sumali sa Amin nang Libre",
+  "common.route.auth.login.index": "Mag-log in",
+  "common.route.auth.login.signIn": "Mag-sign in",
+  "common.route.auth.login.alreadyHaveAccount": "May account na ako",
+  "common.route.auth.logout.index": "Mag-sign out",
+  "common.route.debug.healthCheck": "Health Check",
+  "common.route.debug.index": "Debug",
+  "common.route.debug.pageInventory": "Inventory ng mga Pahina",
+  "common.route.debug.releaseToggles": "Release Toggles",
+  "common.route.debug.siteConfiguration": "Site Configuration",
+  "common.route.debug.uiToggles": "UI Toggles",
+  "common.route.listings.listingComposer.createNewListing": "Gumawa ng Bagong Listing",
+  "common.route.settings.index": "Settings",
+  "common.navbar.search.label": "Search",
+  "common.navbarAuth.viewProfileLink.label": "Tignan ang Profile"
+}

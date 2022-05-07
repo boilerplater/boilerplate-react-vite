@@ -1,8 +1,9 @@
 import React, { Suspense } from 'react';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { Modal } from 'antd';
-import Layout from '@/layouts/Layout';
 import App from './_app';
+import Layout from '@/layouts/Layout';
+import PreloaderSpinner from '@/components/PreloaderSpinner';
 // Pages required
 import IndexPage from './index';
 import Error404Page from './404';
@@ -25,12 +26,17 @@ export const AppRoutes: React.FC<Props> = () => {
   // the gallery links was clicked. If it's there, use it as the location for
   // the <Routes> so we show the gallery in the background, behind the modal.
   const locState = location.state as { backgroundLocation?: Location };
-  // const returnHref: any = (history.length > 2) ? -1 : '/';
-  const returnHref: any = -1;
+
+  const handleModalCancel = () => {
+    // const returnHref: any = (history.length > 2) ? -1 : '/';
+    const returnHref: any = -1;
+
+    navigate(returnHref);
+  };
 
   return (
     <App>
-      <Suspense fallback={(<div className="text-center p-12">Loading...</div>)}>
+      <Suspense fallback={(<div className="text-center p-12"><PreloaderSpinner /></div>)}>
         <Routes location={locState?.backgroundLocation || location}>
           <Route element={<Layout />}>.
             <Route index element={<IndexPage />} />
@@ -127,17 +133,29 @@ export const AppRoutes: React.FC<Props> = () => {
       */}
 
       {locState?.backgroundLocation && (
-        <Suspense fallback={(<div className="text-center p-12">Loading in Modal...</div>)}>
-          <Modal
-            title="Post Modal"
-            visible={!!locState?.backgroundLocation}
-            onCancel={() => navigate(returnHref)}
-          >
+        <Modal
+          title="Post Modal"
+          visible={!!locState?.backgroundLocation}
+          onCancel={handleModalCancel}
+          // centered
+          // width={'auto'}
+          // footer={null}
+          // closable={false}
+          // bodyStyle={{ padding: 0 }}
+          // className="sm:max-w-2xl max-w-full !w-full md:max-w-5xl !my-0"
+        >
+          <Suspense fallback={(<div className="text-center p-12"><PreloaderSpinner /></div>)}>
             <Routes>
+              {/*
+              Old v5 react router
+              <Route path={['/items/:slug']} render={({match, history}) => (
+                <ItemsPage inModal={true} />
+              )} />
+              */}
               <Route path="*" element={<Error404Page />} />
             </Routes>
-          </Modal>
-        </Suspense>
+          </Suspense>
+        </Modal>
       )}
     </App>
   )

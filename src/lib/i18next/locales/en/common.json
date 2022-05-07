@@ -1,0 +1,43 @@
+{
+  "h1": "A simple example",
+  "change-locale": "Change locale",
+  "to-second-page": "To second page",
+  "error-with-status": "A {{statusCode}} error occurred on server",
+  "error-without-status": "An error occurred on the server",
+  "title": "Home | next-i18next",
+  "welcome": "Hello, Welcome to React Native Boilerplate by @randelltuazon",
+  "actions": {
+    "continue": "Continue"
+  },
+  "example": {
+    "helloUser": "I am a fake user, my name is {{name}}",
+    "labels": {
+      "userId": "Enter a user id"
+    }
+  },
+  "common.brandName": "Mobaverse",
+  "common.brandName.tagline": "The social blockchain-based marketplace platform.",
+  "common.brandName.description": "Stockton is a UI toolkit for developing with HTML, CSS, and JS. Built on top of Bootstrap and Materialize. Build responsive, mobile-first projects on the web with Stockton UI front-end component library. Quickly prototype your ideas or build your entire app with responsive grid system, extensive prebuilt components, and powerful plugins built on jQuery.",
+  "common.socialButtons.facebookLogin.label": "Sign in with Facebook",
+  "common.socialButtons.googleSignIn.label": "Sign in with Google",
+  "common.route.about.aboutUs": "About Us",
+  "common.route.about.howItWorks": "How It Works",
+  "common.route.about.terms": "Privacy & Terms",
+  "common.route.about.team": "Team",
+  "common.route.auth.register.index": "Register",
+  "common.route.auth.register.joinUsForFree": "Join Us for Free",
+  "common.route.auth.login.index": "Login",
+  "common.route.auth.login.signIn": "Sign In",
+  "common.route.auth.login.alreadyHaveAccount": "I already have an account",
+  "common.route.auth.logout.index": "Log out",
+  "common.route.debug.healthCheck": "Health Check",
+  "common.route.debug.index": "Debug",
+  "common.route.debug.pageInventory": "Page Inventory",
+  "common.route.debug.releaseToggles": "Release Toggles",
+  "common.route.debug.siteConfiguration": "Site Configuration",
+  "common.route.debug.uiToggles": "UI Toggles",
+  "common.route.listings.listingComposer.createNewListing": "Create New Listing",
+  "common.route.settings.index": "Settings",
+  "common.navbar.search.label": "Search",
+  "common.navbarAuth.viewProfileLink.label": "View Profile"
+}

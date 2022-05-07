@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { NavLink, Link, matchPath, useLocation, useNavigate, useNavigationType, useResolvedPath, resolvePath } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import logo from '../assets/img/logo.svg';
 import { useListOfUsersGET } from '@/apis/UserApi';
+import { useAppSelector } from '@/lib/redux/hooks';
 import configs from '../config/configuration';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
@@ -12,6 +14,12 @@ interface Props {
 
 const IndexPage: React.FC<Props> = () => {
   const [count, setCount] = useState(0);
+  const location = useLocation();
+  const locState = location.state as { backgroundLocation?: Location };
+  const navigationType = useNavigationType();
+  const { siteLocation, darkMode } = useAppSelector((state) => { return state.app });
+  const { locale } = useAppSelector((state) => { return state.i18n });
+
   // React Query usage
   const {
     isLoading: isUsersQueryLoading,
@@ -26,7 +34,9 @@ const IndexPage: React.FC<Props> = () => {
         <title>Index | Boilerplate</title>
       </Helmet>
 
-      <ScrollToTop />
+      {(!locState?.backgroundLocation && navigationType !== 'POP') && (
+        <ScrollToTop />
+      )}
 
       <main>
         <div>INDEX</div>
@@ -54,6 +64,15 @@ const IndexPage: React.FC<Props> = () => {
                 </div>
               </div>
             )}
+          </div>
+        </section>
+
+        <section className="py-8">
+          <div className="container px-6 mx-auto max-w-screen-xl">
+            <h2 className="text-2xl font-medium">Redux State &rarr;</h2>
+            <div>App - Site Location: <strong>{siteLocation}</strong></div>
+            <div>App - Dark Mode: <strong>{darkMode ? 'true' : 'false'}</strong></div>
+            <div>i18n - Locale: <strong>{locale}</strong></div>
           </div>
         </section>
 
