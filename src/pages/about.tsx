@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import logo from '../assets/img/logo.svg';
 import configs from '../config/configuration';
+import Footer from '@/components/Footer';
 
 interface Props {
   children?: React.ReactNode;
@@ -77,6 +78,7 @@ const AboutPage: React.FC<Props> = () => {
           </div>
         </section>
 
+        <Footer />
       </main>
     </>
   )

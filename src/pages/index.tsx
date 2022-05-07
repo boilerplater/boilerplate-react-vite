@@ -3,6 +3,8 @@ import { Helmet } from 'react-helmet-async';
 import logo from '../assets/img/logo.svg';
 import { useListOfUsersGET } from '@/apis/UserApi';
 import configs from '../config/configuration';
+import Footer from '@/components/Footer';
+import ScrollToTop from '@/components/ScrollToTop';
 
 interface Props {
   children?: React.ReactNode;
@@ -23,6 +25,8 @@ const IndexPage: React.FC<Props> = () => {
       <Helmet>
         <title>Index | Boilerplate</title>
       </Helmet>
+
+      <ScrollToTop />
 
       <main>
         <div>INDEX</div>
@@ -112,6 +116,7 @@ const IndexPage: React.FC<Props> = () => {
           </div>
         </section>
 
+        <Footer />
       </main>
     </>
   )
