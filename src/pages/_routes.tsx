@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate, Location } from 'react-router-dom';
 import { Modal } from 'antd';
 import App from './_app';
 import Layout from '@/layouts/Layout';
@@ -8,10 +8,15 @@ import PreloaderSpinner from '@/components/PreloaderSpinner';
 import IndexPage from './index';
 import Error404Page from './404';
 // Code Splitting with delay
+const LoginPage = React.lazy(() => import('./login'));
 const AboutPage = React.lazy(() => import('./about'));
 
 interface Props {
   children?: React.ReactNode;
+}
+
+interface LocationState {
+  backgroundLocation?: Location; // React.ReactNode
 }
 
 // interface RouteChildrenProps {
@@ -25,7 +30,7 @@ export const AppRoutes: React.FC<Props> = () => {
   // The `backgroundLocation` state is the location that we were at when one of
   // the gallery links was clicked. If it's there, use it as the location for
   // the <Routes> so we show the gallery in the background, behind the modal.
-  const locState = location.state as { backgroundLocation?: Location };
+  const locationState = location.state as LocationState;
 
   const handleModalCancel = () => {
     // const returnHref: any = (history.length > 2) ? -1 : '/';
@@ -37,9 +42,10 @@ export const AppRoutes: React.FC<Props> = () => {
   return (
     <App>
       <Suspense fallback={(<div className="text-center p-12"><PreloaderSpinner /></div>)}>
-        <Routes location={locState?.backgroundLocation || location}>
+        <Routes location={locationState?.backgroundLocation || location}>
           <Route element={<Layout />}>.
             <Route index element={<IndexPage />} />
+            <Route path="/login" element={<LoginPage />} />
             <Route path="/about/*" element={<AboutPage />} />
             <Route path="*" element={<Error404Page />} />
           </Route>
@@ -56,7 +62,7 @@ export const AppRoutes: React.FC<Props> = () => {
             </Layout>
           } />
 
-        <Routes location={locState?.backgroundLocation || location}>
+        <Routes location={locationState?.backgroundLocation || location}>
           <Route path="/" element={<Layout />}>
             <Route index element={<IndexPage />} />
             <Route path="gallery" element={<Error404 />} />
@@ -66,7 +72,7 @@ export const AppRoutes: React.FC<Props> = () => {
         </Routes>
 
 
-        <Routes location={locState?.backgroundLocation || location}>
+        <Routes location={locationState?.backgroundLocation || location}>
           <AdminRoute path="/admin" component={AdminPage} />
           <Route path="*" render={() => (
             <LayoutMain>
@@ -132,10 +138,10 @@ export const AppRoutes: React.FC<Props> = () => {
         </Routes>
       */}
 
-      {locState?.backgroundLocation && (
+      {locationState?.backgroundLocation && (
         <Modal
           title="Post Modal"
-          visible={!!locState?.backgroundLocation}
+          visible={!!locationState?.backgroundLocation}
           onCancel={handleModalCancel}
           // centered
           // width={'auto'}
@@ -152,6 +158,7 @@ export const AppRoutes: React.FC<Props> = () => {
                 <ItemsPage inModal={true} />
               )} />
               */}
+              <Route path="/login" element={<LoginPage inModal={true} />} />
               <Route path="*" element={<Error404Page />} />
             </Routes>
           </Suspense>
