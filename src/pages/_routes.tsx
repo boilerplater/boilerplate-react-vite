@@ -157,6 +157,45 @@ export const AppRoutes: React.FC<Props> = () => {
           </Suspense>
         </Modal>
       )}
+
+      {/*
+        <Switch location={location}>
+          {routes.map((route: any, index: number) => {
+            // Check: IF route has modal flag set to true,
+            // THEN display inside modal
+            // ELSE display 404 error
+            return route.modal && (
+              <Route
+                key={index}
+                path={route.path}
+                exact={route.exact}
+                render={(match?: any, history?: any) => (
+                  <route.component inModal={true} />
+                )}
+              />
+            );
+          })}
+
+          <Route path="*" render={(routeProps?: any) => (
+            <Error404 />
+          )} />
+        </Switch>
+      */}
+      {/*
+      <Switch location={backgroundLocation || location}>
+        {routes.map((route: any, index: any) => (
+          <Route
+            key={index}
+            path={route.path}
+            exact={route.exact}
+            // children={route.component}
+            render={(match?: any, history?: any) => (
+              <route.component inModal={false} />
+            )}
+          />
+        ))}
+      </Switch>
+      */}
     </App>
   )
 }

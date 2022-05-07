@@ -1,6 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
+import I18nModal from '@/components/I18nModal';
 
 interface Props {
   children?: React.ReactNode;
@@ -18,6 +19,8 @@ const Layout: React.FC<Props> = ({ className }) => {
           <Outlet />
         </div>
       </div>
+
+      <I18nModal />
     </div>
   )
 };

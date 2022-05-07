@@ -36,9 +36,9 @@ const PreloaderStatic: React.FC<Props> = ({ bootstrapped }) => {
     >
       <div className="flex justify-center items-center h-full p-4">
         <div className="text-center">
-          <h1 className="text-6xl text-center mb-4 text-orange-700 font-brand">
+          <h1 className="text-6xl text-center mb-4 font-brand">
             <img src={logo} alt="Logo" className="inline-block h-16 mr-4" />
-            adtaco
+            Brand
           </h1>
           <div className="spinner-border text-gray-400" role="status">
             <span className="sr-only">Loading...</span>

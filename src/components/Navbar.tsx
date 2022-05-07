@@ -16,8 +16,7 @@ const Navbar: React.FC<Props> = ({ className }) => {
   const appState = useAppSelector((state) => { return state.app });
   const { siteLocation } = useAppSelector((state) => { return state.app });
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
-  const { locale: i18nLocale } = useAppSelector((state) => { return state.i18n });
-  const [currentLocale, setCurrentLocale] = useState<string>(i18nLocale);
+  const { locale } = useAppSelector((state) => { return state.i18n });
 
   useEffect(() => {
     if (appState.darkMode === true || (!('darkMode' in appState) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -115,7 +114,7 @@ const Navbar: React.FC<Props> = ({ className }) => {
                       );
                   }
                 })()}
-                <span className="text-xs ml-2">{currentLocale.toUpperCase()}</span>
+                <span className="text-xs ml-2">{locale.toUpperCase()}</span>
               </button>
             </li>
             <li className="nav-item">

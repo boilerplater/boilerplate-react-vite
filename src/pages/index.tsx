@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { NavLink, Link, matchPath, useLocation, useNavigate, useNavigationType, useResolvedPath, resolvePath } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { useTranslation } from 'react-i18next';
 import logo from '../assets/img/logo.svg';
 import { useListOfUsersGET } from '@/apis/UserApi';
 import { useAppSelector } from '@/lib/redux/hooks';
@@ -14,6 +15,7 @@ interface Props {
 
 const IndexPage: React.FC<Props> = () => {
   const [count, setCount] = useState(0);
+  const { t } = useTranslation();
   const location = useLocation();
   const locState = location.state as { backgroundLocation?: Location };
   const navigationType = useNavigationType();
@@ -40,7 +42,7 @@ const IndexPage: React.FC<Props> = () => {
 
       <main>
         <div>INDEX</div>
-
+        <p>{t('welcome')}</p>
         <section className="py-20 bg-gray-200 dark:bg-gray-800">
           <div className="container px-6 mx-auto max-w-screen-xl">
             <h2 className="font-medium text-3xl mb-8">React Query</h2>
